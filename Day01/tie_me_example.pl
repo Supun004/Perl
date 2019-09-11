@@ -30,6 +30,7 @@ $object = tie @x, MyArray; #@x is now a MyArray array;
 print "object is a ", ref($object), "\n";
 
 $x[0] = "This is test"; #this will call STORE();
+
 print $x[0], "\n"; #this will call FETCH();
 
 print $object->FETCH(0), "\n";
