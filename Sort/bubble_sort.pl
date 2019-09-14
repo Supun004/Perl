@@ -24,6 +24,15 @@ my $duration = time - $start;
 print "Total Execution time: $duration\n";
 
 
+
+my $start = time;
+#print "$start\n";
+insertion_sort(@unsortedarray);
+my $duration = time - $start;
+
+print "Total Execution time: $duration\n";
+
+
 sub buble_sort{
 
     my @array = @_;
@@ -76,5 +85,33 @@ sub selection_sort{
     }
     # print @array;
     # print "\n";
+
+}
+
+sub insertion_sort{
+    my @array = @_;
+
+    my $array_len = $#array;
+
+    for my $i (0 .. $array_len-1 ){
+
+        for my $j (0 .. $i){
+            my $temp;
+            if($array[$j]> $array[$i+1] ){
+                $temp = $array[$j];
+                $array[$j] = $array[$i+1];
+                $array[$i+1] = $temp;
+            }
+
+            # print @array;
+            # print "\n";
+
+        }
+
+        
+        # print "##################\n";
+    }
+    
+
 
 }
