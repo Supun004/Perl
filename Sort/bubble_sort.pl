@@ -5,8 +5,9 @@ use strict;
 
 use Time::HiRes qw(time);
 
-my @array  = ( 1 .. 10000 );
+my @array  = ( 1 .. 1000 );
 my @unsortedarray = reverse(@array);
+print "Array length: $#array\n";
 #print @unsortedarray;
 
 my $start = time;
@@ -14,23 +15,30 @@ my $start = time;
 buble_sort(@unsortedarray);
 my $duration = time - $start;
 
-print "Total Execution time: $duration\n";
+print "Buble sort:Total Execution time: $duration\n";
 
-my $start = time;
+$start = time;
 #print "$start\n";
 selection_sort(@unsortedarray);
-my $duration = time - $start;
+$duration = time - $start;
 
-print "Total Execution time: $duration\n";
+print "Selecton Sort:Total Execution time: $duration\n";
 
 
-
-my $start = time;
+$start = time;
 #print "$start\n";
 insertion_sort(@unsortedarray);
-my $duration = time - $start;
+$duration = time - $start;
 
-print "Total Execution time: $duration\n";
+print "Insertion Sort:Total Execution time: $duration\n";
+
+
+$start = time;
+#print "$start\n";
+insertion_sort_2(@unsortedarray);
+$duration = time - $start;
+
+print "Insertion Sort 2:Total Execution time: $duration\n";
 
 
 sub buble_sort{
@@ -112,6 +120,45 @@ sub insertion_sort{
         # print "##################\n";
     }
     
+}
 
+sub insertion_sort_2{
+    my @array = @_;
+
+    my $array_len = $#array;
+
+    for my $i (0 .. $array_len-1 ){
+
+        for my $j (0 .. $i){
+            # print @array;
+            # print "\n";
+            # print "i: $i  j:$j \n";
+            # print "array[j]: ".$array[$j]. " array[i+1]: ".$array[$i+1]."\n";
+            if($array[$j] > $array[$i+1] ){
+                my $temp = $array[$i+1];
+                for my $k (reverse $j .. $i){
+                   $array[$k+1] = $array[$k];
+                #    print "k: $k\n";
+                #    print $temp. " " .$array[$k]. " " . $array[$k+1]. "\n" ;
+                   
+                }
+                $array[$j] = $temp;
+                # print @array;
+                # print "\n";
+                last;
+
+            }
+
+            # print @array;
+            # print "\n";
+
+        }
+
+        # print @array;
+        # print "##################\n";
+    }
+    
+    # print @array;
+    # print "##################\n";
 
 }
