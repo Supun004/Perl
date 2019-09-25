@@ -13,3 +13,5 @@ my $my_cal = calculator->new({
                             operator => "-"});
 
 print $my_cal->get_results();
+
+print calculator::get_results();
